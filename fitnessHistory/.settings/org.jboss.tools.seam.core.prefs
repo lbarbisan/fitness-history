@@ -1,0 +1,17 @@
+#Fri Apr 10 20:53:04 CEST 2009
+action.package=org.domain.fitnesshistory.session
+action.sources=/fitnessHistory-ejb/ejbModule
+eclipse.preferences.version=1
+model.package=org.domain.fitnesshistory.entity
+model.sources=/fitnessHistory-ejb/ejbModule
+seam.ear.project=fitnessHistory-ear
+seam.ejb.project=fitnessHistory-ejb
+seam.project.connection.profile=fitnessHistory
+seam.project.deployment.type=ear
+seam.project.settings.version=1.1
+seam.project.web.root.folder=/fitnessHistory/WebContent
+seam.runtime.name=jboss-seam-2.1.1.GA
+seam.test.creating=true
+seam.test.project=fitnessHistory-test
+test.package=org.domain.fitnesshistory.test
+test.sources=/fitnessHistory-test/test-src

@@ -1,0 +1,160 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:s="http://jboss.com/products/seam/taglib"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:a="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich"
+    template="layout/template.xhtml">
+
+<ui:define name="body">
+
+    <h:form id="entityMesure" styleClass="edit">
+
+        <rich:panel>
+            <f:facet name="header">#{entityMesureHome.managed ? 'Edit' : 'Add'} Entity mesure</f:facet>
+
+
+			<s:decorate id="dateField" template="layout/edit.xhtml">
+                <ui:define name="label">Date</ui:define>
+                <rich:calendar id="date"
+                          value="#{entityMesureHome.instance.date}" datePattern="MM/dd/yyyy" />
+            </s:decorate>
+            
+            
+			<s:decorate id="nameField" template="layout/edit.xhtml">
+                <ui:define name="label">Name</ui:define>
+                <h:inputText id="name"
+                           size="20"
+                      maxlength="20"
+                          value="#{entityMesureHome.instance.name}">
+                    <a:support event="onblur" reRender="nameField" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+            
+
+			<s:decorate id="poidsField" template="layout/edit.xhtml">
+                <ui:define name="label">Poids</ui:define>
+                <h:inputText id="poids"
+                          value="#{entityMesureHome.instance.poids}">
+                    <a:support event="onblur" reRender="poidsField" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+            
+            
+			<s:decorate id="graisseField" template="layout/edit.xhtml">
+                <ui:define name="label">Graisse</ui:define>
+                <h:inputText id="graisse"
+                          value="#{entityMesureHome.instance.graisse}">
+                    <a:support event="onblur" reRender="graisseField" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+            
+
+			<s:decorate id="eauField" template="layout/edit.xhtml">
+                <ui:define name="label">Eau</ui:define>
+                <h:inputText id="eau"
+                          value="#{entityMesureHome.instance.eau}">
+                    <a:support event="onblur" reRender="eauField" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+            
+            
+            <s:decorate id="muscleField" template="layout/edit.xhtml">
+                <ui:define name="label">Muscle</ui:define>
+                <h:inputText id="muscle"
+                          value="#{entityMesureHome.instance.muscle}">
+                    <a:support event="onblur" reRender="muscleField" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+            
+            <s:decorate id="silouhetteField" template="layout/edit.xhtml">
+                <ui:define name="label">Silouhette</ui:define>
+                <h:inputText id="silouhette"
+                          value="#{entityMesureHome.instance.silouhette}">
+                    <a:support event="onblur" reRender="silouhetteField" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+
+            <s:decorate id="caloriesField" template="layout/edit.xhtml">
+                <ui:define name="label">Calories</ui:define>
+                <h:inputText id="calories"
+                          value="#{entityMesureHome.instance.calories}">
+                    <a:support event="onblur" reRender="caloriesField" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+
+            <s:decorate id="joulesField" template="layout/edit.xhtml">
+                <ui:define name="label">Joules</ui:define>
+                <h:inputText id="joules"
+                          value="#{entityMesureHome.instance.joules}">
+                    <a:support event="onblur" reRender="joulesField" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>       
+
+
+            <s:decorate id="osField" template="layout/edit.xhtml">
+                <ui:define name="label">Os</ui:define>
+                <h:inputText id="os"
+                          value="#{entityMesureHome.instance.os}">
+                    <a:support event="onblur" reRender="osField" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+
+            <s:decorate id="vicereField" template="layout/edit.xhtml">
+                <ui:define name="label">Vicere</ui:define>
+                <h:inputText id="vicere"
+                          value="#{entityMesureHome.instance.vicere}">
+                    <a:support event="onblur" reRender="vicereField" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+            <div style="clear:both">
+                <span class="required">*</span>
+                required fields
+            </div>
+
+        </rich:panel>
+
+        <div class="actionButtons">
+
+            <h:commandButton id="save"
+                          value="Save"
+                         action="#{entityMesureHome.persist}"
+                       disabled="#{!entityMesureHome.wired}"
+                       rendered="#{!entityMesureHome.managed}"/>
+
+            <h:commandButton id="update"
+                          value="Save"
+                         action="#{entityMesureHome.update}"
+                       rendered="#{entityMesureHome.managed}"/>
+
+            <h:commandButton id="delete"
+                          value="Delete"
+                         action="#{entityMesureHome.remove}"
+                      immediate="true"
+                       rendered="#{entityMesureHome.managed}"/>
+
+            <s:button id="cancelEdit"
+                   value="Cancel"
+             propagation="end"
+                    view="/EntityMesure.xhtml"
+                rendered="#{entityMesureHome.managed}"/>
+
+            <s:button id="cancelAdd"
+                   value="Cancel"
+             propagation="end"
+                    view="/#{empty entityMesureFrom ? 'EntityMesureList' : entityMesureFrom}.xhtml"
+                rendered="#{!entityMesureHome.managed}"/>
+
+        </div>
+    </h:form>
+
+</ui:define>
+
+</ui:composition>

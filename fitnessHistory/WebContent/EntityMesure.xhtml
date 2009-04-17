@@ -1,0 +1,92 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:s="http://jboss.com/products/seam/taglib"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:rich="http://richfaces.org/rich"
+    template="layout/template.xhtml">
+
+<ui:define name="body">
+
+    <rich:panel>
+        <f:facet name="header">Entity mesure Details</f:facet>
+
+
+        <s:decorate id="calories" template="layout/display.xhtml">
+            <ui:define name="label">Calories</ui:define>
+            <h:outputText value="#{entityMesureHome.instance.calories}"/>
+        </s:decorate>
+
+        <s:decorate id="date" template="layout/display.xhtml">
+            <ui:define name="label">Date</ui:define>
+            <h:outputText value="#{entityMesureHome.instance.date}">
+                <s:convertDateTime type="date" dateStyle="short"/>
+            </h:outputText>
+        </s:decorate>
+
+        <s:decorate id="eau" template="layout/display.xhtml">
+            <ui:define name="label">Eau</ui:define>
+            <h:outputText value="#{entityMesureHome.instance.eau}"/>
+        </s:decorate>
+
+        <s:decorate id="graisse" template="layout/display.xhtml">
+            <ui:define name="label">Graisse</ui:define>
+            <h:outputText value="#{entityMesureHome.instance.graisse}"/>
+        </s:decorate>
+
+        <s:decorate id="joules" template="layout/display.xhtml">
+            <ui:define name="label">Joules</ui:define>
+            <h:outputText value="#{entityMesureHome.instance.joules}"/>
+        </s:decorate>
+
+        <s:decorate id="muscle" template="layout/display.xhtml">
+            <ui:define name="label">Muscle</ui:define>
+            <h:outputText value="#{entityMesureHome.instance.muscle}"/>
+        </s:decorate>
+
+        <s:decorate id="name" template="layout/display.xhtml">
+            <ui:define name="label">Name</ui:define>
+            <h:outputText value="#{entityMesureHome.instance.name}"/>
+        </s:decorate>
+
+        <s:decorate id="os" template="layout/display.xhtml">
+            <ui:define name="label">Os</ui:define>
+            <h:outputText value="#{entityMesureHome.instance.os}"/>
+        </s:decorate>
+
+        <s:decorate id="poids" template="layout/display.xhtml">
+            <ui:define name="label">Poids</ui:define>
+            <h:outputText value="#{entityMesureHome.instance.poids}"/>
+        </s:decorate>
+
+        <s:decorate id="silouhette" template="layout/display.xhtml">
+            <ui:define name="label">Silouhette</ui:define>
+            <h:outputText value="#{entityMesureHome.instance.silouhette}"/>
+        </s:decorate>
+
+        <s:decorate id="vicere" template="layout/display.xhtml">
+            <ui:define name="label">Vicere</ui:define>
+            <h:outputText value="#{entityMesureHome.instance.vicere}"/>
+        </s:decorate>
+
+        <div style="clear:both"/>
+
+    </rich:panel>
+
+    <div class="actionButtons">
+
+        <s:button view="/EntityMesureEdit.xhtml"
+                    id="edit"
+                 value="Edit"/>
+
+        <s:button view="/#{empty entityMesureFrom ? 'EntityMesureList' : entityMesureFrom}.xhtml"
+                    id="done"
+                 value="Done"/>
+
+    </div>
+
+</ui:define>
+
+</ui:composition>
